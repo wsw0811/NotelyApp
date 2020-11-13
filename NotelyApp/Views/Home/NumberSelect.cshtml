@@ -1,0 +1,14 @@
+﻿@model NumberSelect
+@{
+    ViewData["Title"] = "The commodity you wanted is";
+    var label = "please type an number";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@Model.Name</p>
+
+<form asp-action="NumberSelect" method="post">
+    <label>@label</label>
+    <input name="inputNumber" value="@Model.Input">
+    <input type="submit" value="Submit">
+</form>

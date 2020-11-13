@@ -1,0 +1,10 @@
+﻿@model NoteModel
+
+    <div class="index__new-note-button-wrapper">
+        <form asp-action="Index">
+            <div class="form-group">
+                <input class="form-control note-editor__subject-input" asp-for="Subject">
+                <a asp-action="Index" class="index__new-note-button">Search</a>
+            </div>
+        </form>
+    </div>

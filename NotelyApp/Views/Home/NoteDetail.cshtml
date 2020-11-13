@@ -1,0 +1,34 @@
+﻿
+@model NoteModel
+
+@{
+  ViewData["Title"] = "NoteDetail";
+}
+
+<div>
+      <h1>
+        @Model.Subject
+      </h1>    
+      <div>
+        @Model.Detail
+      </div>
+    </div>      
+        <div>
+          <a asp-action="Index">
+            Back to List
+          </a>
+        </div>
+        <div>
+          <a asp-action="NoteEditor" asp-route-id="@Model.Id">
+            Edit Note
+          </a>
+        </div>
+        <div>
+          <a asp-action="DeleteNote" asp-route-id="@Model.Id">
+            Delete Note
+          </a>
+        </div>
+      
+    
+
+
