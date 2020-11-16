@@ -22,9 +22,9 @@ namespace NotelyApp.Repositories
             return note;
         }
 
-        public NoteModel FindNoteBySubject(string subject = null)
+        public List<NoteModel> FindNoteBySubject(string subject = null)
         {
-            var note = _notes.Find(n => n.Subject == subject);
+            var note = _notes.FindAll(n => n.Subject == subject);
 
             return note;
         } 

@@ -6,38 +6,39 @@
 
 
 <div>
-  @if (Model.Any())
-  {
+    @if (Model.Any())
+    {
+        <div>
+            <h3>
+                Your Notes
+            </h3>
+        </div>
+
+        @foreach (NoteModel note in Model.Reverse())
+        {
+            <div>
+                <a asp-action="NoteDetail" asp-route-id="@note.Id">
+                    <div>
+                        @note.Subject
+                    </div>
+                </a>
+            </div>
+        }
+        <div>
+            <a asp-action="Search">Search Note</a>
+        </div>
+    }
+    else
+    {
+
+        <div>
+            <h3>
+                You don't have any notes.
+            </h3>
+        </div>
+    }
     <div>
-      <h3>
-        Your Notes
-      </h3>
+        <a asp-action="NoteEditor">New Note</a>
     </div>
-
-    @foreach (NoteModel note in Model.Reverse())
-     {
-       <div>
-         <a asp-action="NoteDetail" asp-route-id="@note.Id">
-           <div>
-             @note.Subject
-           </div>
-         </a>
-       </div>
-           
-     }
-  }
-  else
-  {
-
-    <div>
-      <h3>
-        You don't have any notes. 
-      </h3>
-    </div>
-  }
-
-  <div>
-    <a asp-action="NoteEditor">New Note</a>
-  </div>
 </div>
 

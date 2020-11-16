@@ -6,6 +6,8 @@ using NotelyApp.Models;
 using NotelyApp.Services;
 using Microsoft.Extensions.Logging;
 using NotelyApp.Repositories;
+using System.Collections.Generic;
+
 namespace NotelyApp.Controllers
 {
     public class HomeController : Controller
@@ -92,11 +94,14 @@ namespace NotelyApp.Controllers
 
             return RedirectToAction("Index");
         }
-        public IActionResult FindNote(string subject)
+        public IActionResult Search(string subject)
         {
-            var note = _noteRepository.FindNoteBySubject(subject);
-
-            return View(note);
+            IEnumerable<NoteModel> noteModels = new List<NoteModel>();
+            if (!string.IsNullOrEmpty(subject))
+            {
+                noteModels = _noteRepository.FindNoteBySubject(subject);
+            }              
+            return View(noteModels);
         }
         public IActionResult Number(String inputNumber = null)
         {
