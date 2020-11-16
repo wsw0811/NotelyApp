@@ -1,14 +1,27 @@
-﻿@model NoteModel
+﻿@model IEnumerable<NoteModel>
 @{
-    ViewData["Title"] = "The Number you typed is";
-    var label = "please type an number";
+    ViewData["Title"] = "Search Note";
+    var label = "please type an subject of a note";
 }
 <h1>@ViewData["Title"]</h1>
+@if (Model.Any())
+{
+    foreach (NoteModel noteModel in Model)
+    {
+        <div>
+            <a asp-action="NoteDetail" asp-route-id="@noteModel.Id">
+                <div>
+                    @noteModel.Subject
+                </div>
+            </a>
+        </div>
+    }
+}
 
-<p>@Model.Subject</p>
 
-<form asp-action="FindNote" method="post">
+
+<form asp-action="Search" method="post">
     <label>@label</label>
-    <input name="subject" value="@Model.Subject">
+    <input name="subject">
     <input type="submit" value="Submit">
 </form>
