@@ -22,6 +22,12 @@ namespace NotelyApp.Repositories
             return note;
         }
 
+        public NoteModel FindNoteBySubject(string subject = null)
+        {
+            var note = _notes.Find(n => n.Subject == subject);
+
+            return note;
+        } 
         public IEnumerable<NoteModel> GetAllNotes()
         {
             return _notes;

@@ -41,6 +41,7 @@ namespace NotelyApp.Controllers
             return View(note);
         }
 
+        
         [HttpGet]
         public IActionResult NoteEditor(Guid id = default)
         {
@@ -91,7 +92,12 @@ namespace NotelyApp.Controllers
 
             return RedirectToAction("Index");
         }
+        public IActionResult FindNote(string subject)
+        {
+            var note = _noteRepository.FindNoteBySubject(subject);
 
+            return View(note);
+        }
         public IActionResult Number(String inputNumber = null)
         {
             if (String.IsNullOrEmpty(inputNumber))

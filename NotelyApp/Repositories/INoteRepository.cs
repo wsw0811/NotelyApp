@@ -10,5 +10,6 @@ namespace NotelyApp.Repositories
         IEnumerable<NoteModel> GetAllNotes();
         void SaveNote(NoteModel noteModel);
         void DeleteNote(NoteModel noteModel);
+        NoteModel FindNoteBySubject(string subject);
     }
 }
