@@ -11,5 +11,6 @@ namespace NotelyApp.Repositories
         void SaveNote(NoteModel noteModel);
         void DeleteNote(NoteModel noteModel);
         List<NoteModel> FindNoteBySubject(string subject);
+        NoteModel EditNote(Guid id);
     }
 }

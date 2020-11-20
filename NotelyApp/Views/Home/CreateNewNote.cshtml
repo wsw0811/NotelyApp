@@ -1,0 +1,19 @@
+﻿@model NoteModel
+@{
+    ViewData["Title"] = "Create New Note"; 
+ }
+<h1><span>Create New Note</span></h1>
+<form asp-action="CreateNewNote">
+    <div>
+        <label asp-for="Subject">Subject</label>
+        <input asp-for="Subject" />
+    </div>
+
+    <div>
+        <label asp-for="Detail">Your Note</label>
+        <textarea asp-for="Detail" id="TextArea"></textarea>
+    </div>
+    
+    <a asp-action="Index">Cancel</a>
+    <button type="submit">Save Note</button>
+</form>

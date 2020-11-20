@@ -1,61 +1,22 @@
-﻿
-@model NoteModel
+﻿@model NoteModel
 
 @{
-
-  @if (Model != null && Model.Id != Guid.Empty)
-  {
-    ViewData["Title"] = "Edit Note";
-
-  }
-  else
-  {
-    ViewData["Title"] = "Create New Note";
-  }
-
-}
-
-
-
-      <h1>
-        @if (Model != null && Model.Id != Guid.Empty)
-        {
-          <span>Edit Your Note</span>
-        }
-        else
-        {
-          <span>Create New Note</span>
-        }
-      </h1>
+    ViewData["Title"] = "Edit Note"; 
+ }
+      <h1><span>Edit Your Note</span></h1>
     
-    <form asp-action="NoteEditor" method="post">
-      
+      <form asp-action="NoteEditor" method="post">
+          <div>
+              <label asp-for="Subject">Subject</label>
+              <input asp-for="Subject" />
+          </div>
 
-        
-
-        <div>
-          <label asp-for="Subject">Subject</label>
-          <input asp-for="Subject"/>
-        </div>
-
-        <div>
-          <label asp-for="Detail">Your Note</label>
-          <textarea asp-for="Detail" id="TextArea"></textarea>
-        </div>
-      
-
-
-     
-          @if (Model != null && Model.Id != Guid.Empty)
-          {
-            <a asp-action="NoteDetail" asp-route-id="@Model.Id">Cancel</a>
-          }
-          else
-          {
-            <a asp-action="Index">Cancel</a>
-          }
-
+          <div>
+              <label asp-for="Detail">Your Note</label>
+              <textarea asp-for="Detail" id="TextArea"></textarea>
+          </div>
+          <a asp-action="NoteDetail" asp-route-id="@Model.Id">Cancel</a>
           <button type="submit">Save Note</button>
-        
-    </form>
+          
+      </form>
  

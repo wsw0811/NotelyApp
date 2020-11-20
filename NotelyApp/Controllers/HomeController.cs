@@ -55,7 +55,18 @@ namespace NotelyApp.Controllers
             }
 
             return View();
-
+        }
+        public IActionResult CreateNewNote(NoteModel noteModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (noteModel != null && noteModel.Id == Guid.Empty)
+                {
+                    _noteRepository.SaveNote(noteModel);
+                }
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         [HttpPost]
@@ -63,21 +74,11 @@ namespace NotelyApp.Controllers
         {
             if (ModelState.IsValid)
             {               
-                if (noteModel != null && noteModel.Id == Guid.Empty)
+                if (noteModel != null && noteModel.Id != Guid.Empty)
+                
                 {
-                    noteModel.Id = Guid.NewGuid();
-
-
-                    _noteRepository.SaveNote(noteModel);
+                    var note = _noteRepository.EditNote(noteModel.Id);                                        
                 }
-                else
-                {
-                    var note = _noteRepository.FindNoteById(noteModel.Id);
-                    
-                    note.Subject = noteModel.Subject;
-                    note.Detail = noteModel.Detail;
-                }
-
                 return RedirectToAction("Index"); 
             }
             else
