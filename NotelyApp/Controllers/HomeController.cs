@@ -74,10 +74,9 @@ namespace NotelyApp.Controllers
         {
             if (ModelState.IsValid)
             {               
-                if (noteModel != null && noteModel.Id != Guid.Empty)
-                
+                if (noteModel != null && noteModel.Id != Guid.Empty)               
                 {
-                    var note = _noteRepository.EditNote(noteModel.Id);                                        
+                    var note = _noteRepository.EditNote(noteModel.Id);
                 }
                 return RedirectToAction("Index"); 
             }
@@ -90,9 +89,8 @@ namespace NotelyApp.Controllers
         public IActionResult DeleteNote(Guid id)
         {
             var note = _noteRepository.FindNoteById(id);
-
             note.IsDeleted = true;
-
+            _noteRepository.DeleteNote(note);
             return RedirectToAction("Index");
         }
         public IActionResult Search(string subject)
